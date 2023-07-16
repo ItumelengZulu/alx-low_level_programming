@@ -1,7 +1,7 @@
 #include <stdio.h>
 /**
 * main - a C program that prints the size of various types 
-* requirements - install libc6-dev-i386 to test -m32 gcc option
+* requirements - install libc6 to test m32 gcc option
 * Return: 0 (Success)
 */
 int main(void)
