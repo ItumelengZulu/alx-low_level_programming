@@ -19,7 +19,7 @@ int main(void)
     n = rand() - RAND_MAX / 2;
 
     /* Print the generated number */
-    printf("The number: %d\n", n);
+    printf( %d\n, n);
 
     /* Check if the number is positive, zero, or negative */
     if (n > 0)
