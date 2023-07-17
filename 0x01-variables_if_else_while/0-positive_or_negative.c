@@ -4,8 +4,10 @@
 
 /**
  * main - Entry point of the program
+ *
  * Description: This function initializes a variable 'n' with a random value
  *              between -RAND_MAX/2 and RAND_MAX/2, and prints its sign.
+ *
  * Return: Always 0 (Success)
  */
 int main(void)
@@ -18,21 +20,18 @@ int main(void)
     /* Generate a random number between -RAND_MAX/2 and RAND_MAX/2 */
     n = rand() - RAND_MAX / 2;
 
-    /* Print the generated number */
-    printf( %d\n, n);
-
     /* Check if the number is positive, zero, or negative */
     if (n > 0)
     {
-        printf("is positive");
+        printf("%d is positive\n", n);
     }
     else if (n == 0)
     {
-        printf("is zero");
+        printf("%d is zero\n", n);
     }
     else
     {
-        printf("is negative");
+        printf("%d is negative\n", n);
     }
 
     return (0);
