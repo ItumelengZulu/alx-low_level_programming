@@ -24,5 +24,6 @@ int main(void)
 	else (n < 0) 
 	{
 		printf("is negative");
+	}
 	return (0);
 }
