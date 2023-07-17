@@ -25,7 +25,7 @@ int main(void)
 	last_digit = n % 10;
 
 	/* Print the generated number 'n' and its last digit */
-	printf("The string Last digit of %d is %d", n, last_digit);
+	printf("Last digit of %d is %d", n, last_digit);
 
 	/* Check the properties of the last digit */
 	if (last_digit > 5)
