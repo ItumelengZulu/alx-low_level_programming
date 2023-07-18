@@ -7,24 +7,23 @@
  */
 int main(void)
 {
-    int count = 50;
-    int fibonacci[50] = {1, 2}; // Array to store the first two Fibonacci numbers
-    int i;
+    int limit = 4000000;
+    int prev = 1, current = 2, next = 0, sum = 0;
 
-    // Calculating the remaining Fibonacci numbers
-    for (i = 2; i < count; i++)
+    while (current <= limit)
     {
-        fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+        if (current % 2 == 0)
+        {
+            sum += current;
+        }
+
+        // Calculate the next Fibonacci term by adding the previous two terms
+        next = prev + current;
+        prev = current;
+        current = next;
     }
 
-    // Printing the Fibonacci numbers separated by a comma and space
-    for (i = 0; i < count - 1; i++)
-    {
-        printf("%d, ", fibonacci[i]);
-    }
-
-    // Printing the last Fibonacci number without a comma and space
-    printf("%d\n", fibonacci[count - 1]);
+    printf("The sum of even-valued terms in the Fibonacci sequence below 4,000,000 is: %d\n", sum);
 
     return 0;
 }
