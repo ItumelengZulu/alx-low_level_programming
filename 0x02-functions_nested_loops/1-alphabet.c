@@ -1,5 +1,5 @@
-#include <main.h>
-#include <stdio.h>
+#include "main.h"
+#include "stdio.h"
 /**
  * main - function to print lowercase alphabets
  * requirements - use for loop
