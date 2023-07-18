@@ -1,11 +1,10 @@
 #include <main.h>
+#include <stdio.h>
 /**
  * main - function to print lowercase alphabets
  * requirements - use for loop
  * Return - 0 (Success)
  */
-#include <stdio.h>
-
 void print_alphabet(void) {
 
   char c;
@@ -14,5 +13,5 @@ void print_alphabet(void) {
     _putchar(c);
   }
   _putchar('\n');
-  return;
+  return 0;
 }
