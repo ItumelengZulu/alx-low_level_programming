@@ -4,7 +4,7 @@
  * requirements - use for loop
  * Return - 0 (Success)
  */
-void print_alphabet(void);{
+void print_alphabet(void) {
 	char c;
 
 	for c='a'; <= 'z'; c++ {
