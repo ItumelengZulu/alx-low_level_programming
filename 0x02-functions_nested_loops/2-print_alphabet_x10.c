@@ -4,18 +4,19 @@
 * requirement - add it to main.h
 * Return : 0 (Success)
 */
-void print_alphabet_x10(void) {
-    int i;
-    char c;
-    for (i = 0; i < 10; i++) {
-        for (c = 'a'; c <= 'z'; c++) {
-            _putchar(c);
+void print_alphabet_x10(void)
+{
+    char ch;
+    char last = 'z';
+    int count = 0;
+
+    while (count < 10)
+    {
+        for (ch = 'a'; ch <= last; ch++)
+        {
+            _putchar(ch);
         }
         _putchar('\n');
+        count++;
     }
-}
-
-int main() {
-    print_alphabet_x10();
-    return 0;
 }
