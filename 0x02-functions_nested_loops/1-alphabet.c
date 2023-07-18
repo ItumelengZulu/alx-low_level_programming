@@ -5,13 +5,14 @@
  * requirements - use for loop
  * Return - 0 (Success)
  */
-void print_alphabet(void) {
+void print_alphabet(void)
+{
+    char ch;
+    char last = 'z';
 
-  char c;
-
-  for (c = 'a'; c <= 'z'; c++) {
-    _putchar(c);
-  }
-  _putchar('\n');
-  return 0;
+    for (ch = 'a'; ch <= last; ch++)
+    {
+        _putchar(ch);
+    }
+    _putchar('\n');
 }
