@@ -7,23 +7,23 @@
  */
 int main(void)
 {
-    int limit = 4000000;
-    int prev = 1, current = 2, next = 0, sum = 0;
+    unsigned int count = 98;
+    unsigned int i, prev = 1, current = 2, next;
 
-    while (current <= limit)
+    printf("%d, %d", prev, current);
+
+    for (i = 2; i < count; i++)
     {
-        if (current % 2 == 0)
-        {
-            sum += current;
-        }
-
-        // Calculate the next Fibonacci term by adding the previous two terms
         next = prev + current;
+
+        // Printing the next Fibonacci number
+        printf(", %d", next);
+
         prev = current;
         current = next;
     }
 
-    printf("The sum of even-valued terms in the Fibonacci sequence below 4,000,000 is: %d\n", sum);
+    printf("\n");
 
     return 0;
 }
