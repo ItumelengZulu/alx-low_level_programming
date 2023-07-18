@@ -1,9 +1,9 @@
 #include "main.h"
-
-void _putchar(char c) {
-    _putchar(c);
-}
-
+/**
+* main - print alphabets 10x
+* requirement - add it to main.h
+* Return : 0 (Success)
+*/
 void print_alphabet_x10(void) {
     int i;
     char c;
