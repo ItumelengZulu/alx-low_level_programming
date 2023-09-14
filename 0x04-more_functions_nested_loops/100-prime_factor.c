@@ -1,20 +1,47 @@
-#include "main.h"
+#include <stdio.h>
+#include <math.h>
 
-/* Recursive function to print an integer */
-void print_number(int n) {
-    /* Handle negative numbers */
-    if (n < 0) {
-        _putchar('-');
-        n = -n;
+/**
+ * largest_prime_factor - Finds the largest prime factor of a number
+ * @n: The number to find the largest prime factor of
+ *
+ * Return: The largest prime factor of the number
+ */
+long largest_prime_factor(long n)
+{
+    long max_prime = -1;
+
+    // Handle divisible by 2
+    while (n % 2 == 0)
+    {
+        max_prime = 2;
+        n /= 2;
     }
 
-    /* Base case: single digit */
-    if (n / 10 == 0) {
-        _putchar(n + '0');
-    } else {
-        /* Recursive case: more than one digit */
-        print_number(n / 10);  /* Print all digits except the last one */
-        _putchar(n % 10 + '0'); /* Print the last digit */
+    // Handle other odd factors
+    for (long i = 3; i <= sqrt(n); i += 2)
+    {
+        while (n % i == 0)
+        {
+            max_prime = i;
+            n /= i;
+        }
     }
+
+    // If n is still greater than 2, it's the largest prime factor
+    if (n > 2)
+        max_prime = n;
+
+    return max_prime;
+}
+
+int main(void)
+{
+    long number = 612852475143;
+    long result = largest_prime_factor(number);
+
+    printf("%ld\n", result);
+
+    return (0);
 }
 
