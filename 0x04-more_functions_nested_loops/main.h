@@ -34,6 +34,8 @@ void print_square(int size);
 /* Function prototype for triangle*/
 void print_triangle(int size);
 
+long largest_prime_factor(long n);
+
 /* Function for print number */
 void print_number(int n)
 #endif /* MAIN_H */
