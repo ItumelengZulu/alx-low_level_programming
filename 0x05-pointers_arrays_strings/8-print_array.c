@@ -11,25 +11,36 @@ void print_array(int *a, int n)
 {
     int i;
 
+    if (n <= 0)
+    {
+        printf("Return SUCCESS\n");
+        return;
+    }
+
+    printf("int array[%d] = {", n);
+
     for (i = 0; i < n; i++)
     {
-        printf("%d", a[i]); /* Print the current element */
+        printf(" %d", a[i]);
 
         if (i < n - 1)
         {
-            printf(", "); /* Add a comma and a space if it's not the last element */
+            printf(",");
         }
     }
 
-    printf("\n"); /* Print a new line at the end */
+    printf(" };\n");
 }
 
 int main(void)
 {
-    int arr[] = {1, 2, 3, 4, 5};
-    int n = 5;
+    int array1[5] = { -198, 298, 402, -1024, 98 };
+    int array2[256]; // Assuming you have initialized this array with your big data.
+    int array3[1] = { 98 };
 
-    print_array(arr, n);
+    print_array(array1, 5);
+    print_array(array2, 256);
+    print_array(array3, 1);
 
     return (0);
 }
