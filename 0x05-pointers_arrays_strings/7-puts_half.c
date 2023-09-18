@@ -23,7 +23,7 @@ void puts_half(char *str)
     }
     else
     {
-        start = (length + 1) / 2;
+        start = (length - 1) / 2;
     }
 
     /* Print the second half of the string */
@@ -33,13 +33,5 @@ void puts_half(char *str)
     }
 
     putchar('\n');
-}
-
-int main(void)
-{
-    char str[] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
-    puts_half(str);
-
-    return (0);
 }
 
