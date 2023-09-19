@@ -29,8 +29,11 @@ int _atoi(char *s)
         s++;
     }
 
+    /* Declare the result variable. */
+    int result;
+
     /* Convert the digits in the string to an integer. */
-    int result = 0;
+    result = 0;
     while (*s >= '0' && *s <= '9') {
         result = result * 10 + (*s - '0');
         if (result * sign > INT_MAX || result * sign < INT_MIN) {
@@ -50,4 +53,3 @@ int _atoi(char *s)
     /* Return the integer, multiplied by the sign. */
     return result * sign;
 }
-
