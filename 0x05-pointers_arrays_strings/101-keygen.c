@@ -2,18 +2,17 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include <stdbool.h>
 
 #define PASSWORD_LENGTH 12
 
 /**
- * generate_password - Generates a random valid password
+ * main - Generates a random valid password for 101-crackme
  *
- * Return: A pointer to the generated password
+ * Return: 0 on success
  */
-char *generate_password()
+int main(void)
 {
-    char *password = malloc(PASSWORD_LENGTH + 1);  /* +1 for the null terminator */
+    char password[PASSWORD_LENGTH + 1];  /* +1 for the null terminator */
     const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$";
     int i;
 
@@ -28,46 +27,14 @@ char *generate_password()
     }
     password[PASSWORD_LENGTH] = '\0';
 
-    return (password);
-}
+    /* Print the generated password */
+    printf("%s\n", password);
 
-/**
- * is_password_valid - Checks if a password is valid for 101-crackme
- *
- * @password: The password to check
- *
- * Return: True if the password is valid, false otherwise
- */
-bool is_password_valid(const char *password)
-{
-    return (strcmp(password, "Tada!Congrats") == 0);
-}
-
-/**
- * main - Generates a random valid password for 101-crackme
- *
- * Return: 0 on success
- */
-int main(void)
-{
-    char *password;
-
-    /* Generate a random password */
-    password = generate_password();
-
-    /* Check if the generated password is valid */
-    if (is_password_valid(password))
+    /* Check if the generated password is valid for 101-crackme */
+    if (strcmp(password, "Tada!Congrats") == 0)
     {
         printf("Tada! Congrats\n");
     }
-    else
-    {
-        printf("Wrong password\n");
-    }
-
-    /* Free the allocated memory */
-    free(password);
 
     return (0);
 }
-
