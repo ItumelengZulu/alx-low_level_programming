@@ -18,7 +18,7 @@ void print_array(int *a, int n)
         return;
     }
 
-    printf("int array[%d] = {", n);
+    printf("%d", n);
 
     for (i = 0; i < n; i++)
     {
