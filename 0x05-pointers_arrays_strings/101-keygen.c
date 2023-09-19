@@ -50,7 +50,7 @@ char *generate_password(void)
         return password;
 }
 
-int main(void)
+int pass_main(void)
 {
         char *password = generate_password();
         printf("Generated Password: %s\n", password);
