@@ -44,7 +44,7 @@ void print_array(int *a, int n)
  */
 int array_main(void)
 {
-    int array1[5] = { -198, 298, 402, -1024, 98 };
+    int array1[] = {5, -198, 298, 402, -1024, 98 };
     int array2[256];
     int array3[1] = { 98 };
 
