@@ -3,7 +3,7 @@
 #include <time.h>
 #include <string.h>
 
-#define PASSWORD_LENGTH 12
+#define PASSWORD_LENGTH 15
 
 /**
  * main - Generates a random valid password for 101-crackme
@@ -31,7 +31,7 @@ int main(void)
     printf("%s\n", password);
 
     /* Check if the generated password is valid for 101-crackme */
-    if (strcmp(password, "Tada!Congrats") == 0)
+    if (strcmp(password, "Tada! Congrats") == 0)
     {
         printf("Tada! Congrats\n");
     }
