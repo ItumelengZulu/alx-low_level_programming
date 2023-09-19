@@ -1,35 +1,31 @@
 #include <stdio.h>
 
-/**
- * print_array - Prints n elements of an array of integers.
- * @a: A pointer to the array of integers.
- * @n: The number of elements to print.
- *
- * Description: This function prints the elements of an integer array.
- *              If n is less than or equal to 0, it prints "Return SUCCESS".
- */
 void print_array(int *a, int n)
 {
-    int i;
+	if (n <= 0)
+	{
+		printf("\n");
+		return;
+	}
 
-    if (n <= 0)
-    {
-        printf("Return SUCCESS\n");
-        return;
-    }
+	printf("%d", a[0]);
 
-    printf("%d", n);
+	for (int i = 1; i < n; i++)
+	{
+		printf(", %d", a[i]);
+	}
 
-    for (i = 0; i < n; i++)
-    {
-        printf(" %d", a[i]);
+	printf("\n");
+}
 
-        if (i < n - 1)
-        {
-            printf(","); /* Add a comma if it's not the last element */
-        }
-    }
+int main()
+{
+	int arr[] = {1, 2, 3, 4, 5};
+	int n = 5;
 
-    printf(" };\n");
+	printf("Array elements: ");
+	print_array(arr, n);
+
+	return (0);
 }
 
