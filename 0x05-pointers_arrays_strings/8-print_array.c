@@ -33,25 +33,3 @@ void print_array(int *a, int n)
     printf(" };\n");
 }
 
-/**
- * main - Entry point of the program.
- *
- * Description: This function demonstrates the usage of the print_array function.
- *              It initializes three different integer arrays and calls print_array
- *              with various array sizes and contents.
- *
- * Return: Always 0 (Success).
- */
-int main(void)
-{
-    int array1[5] = { -198, 298, 402, -1024, 98 };
-    int array2[256]; 
-    int array3[1] = { 98 };
-
-    print_array(array1, 5);
-    print_array(array2, 256);
-    print_array(array3, 1);
-
-    return (0);
-}
-
