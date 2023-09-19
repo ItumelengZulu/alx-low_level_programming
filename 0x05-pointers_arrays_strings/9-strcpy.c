@@ -7,7 +7,10 @@
  *
  * Return: A pointer to the beginning of the destination buffer.
  */
-char *_strcpy(char *dest, const char *src)
+char *_strcpy(
+	char *dest, 
+	const char *src
+	)
 {
 	char *dest_start = dest; /* Store the starting address of dest */
 
