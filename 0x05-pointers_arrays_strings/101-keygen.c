@@ -9,39 +9,34 @@
  */
 char *generate_password(void)
 {
-    static char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    char *password = malloc(16); // Password length is 15 characters, plus 1 for the null terminator
-    int i;
+	static char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	char *password = malloc(12); /* Password length is 11 characters, plus 1 for the null terminator */
+	int i;
 
-    if (password == NULL)
-    {
-        perror("malloc");
-        exit(EXIT_FAILURE);
-    }
+	if (password == NULL)
+	{
+		perror("malloc");
+		exit(EXIT_FAILURE);
+	}
 
-    srand(time(NULL));
+	srand(time(NULL));
 
-    // Ensure that the password has at least one uppercase letter, one lowercase letter, and one digit
-    password[0] = charset[rand() % 26]; // Uppercase letter
-    password[1] = charset[rand() % 26 + 26]; // Lowercase letter
-    password[2] = charset[rand() % 10 + 52]; // Digit
+	for (i = 0; i < 11; i++)
+	{
+		int index = rand() % 62; /* 62 is the length of the charset */
+		password[i] = charset[index];
+	}
 
-    for (i = 3; i < 15; i++)
-    {
-        int index = rand() % 62; // 62 is the length of the charset
-        password[i] = charset[index];
-    }
+	password[11] = '\0'; /* Null-terminate the password */
 
-    password[15] = '\0'; // Null-terminate the password
-
-    return password;
+	return password;
 }
 
 int main(void)
 {
-    char *password = generate_password();
-    printf("%s\n", password);
-    free(password); // Free the dynamically allocated memory
-    return 0;
+	char *password = generate_password();
+	printf("%s\n", password);
+	free(password); /* Free the dynamically allocated memory */
+	return 0;
 }
 
