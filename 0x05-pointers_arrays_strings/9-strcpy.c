@@ -5,7 +5,7 @@
  * @dest: Pointer to the destination buffer.
  * @src: Pointer to the source string to be copied.
  *
- * Return: A pointer to the destination buffer.
+ * Return: A pointer to the beginning of the destination buffer.
  */
 char *_strcpy(char *dest, const char *src)
 {
@@ -20,10 +20,10 @@ char *_strcpy(char *dest, const char *src)
 	}
 
 	*dest = '\0'; /* Add the null terminator to the destination string */
-	return dest_start; /* Return a pointer to the beginning of dest */
+	return (dest_start); /* Return a pointer to the beginning of dest */
 }
 
-int copy_main(void)
+int array_main(void)
 {
 	char src[] = "Hello, World!";
 	char dest[20]; /* Make sure dest has enough space to hold the copied string */
