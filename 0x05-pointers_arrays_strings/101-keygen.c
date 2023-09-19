@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <stdbool.h>
 
 #define PASSWORD_LENGTH 12
 
@@ -12,7 +13,7 @@
  */
 char *generate_password()
 {
-    char password[PASSWORD_LENGTH + 1];  /* +1 for the null terminator */
+    char *password = malloc(PASSWORD_LENGTH + 1);  /* +1 for the null terminator */
     const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$";
     int i;
 
@@ -63,6 +64,9 @@ int main(void)
     {
         printf("Wrong password\n");
     }
+
+    /* Free the allocated memory */
+    free(password);
 
     return (0);
 }
