@@ -27,9 +27,6 @@ int main(void)
     }
     password[PASSWORD_LENGTH] = '\0';
 
-    /* Print the generated password */
-    printf("%s\n", password);
-
     /* Check if the generated password is valid for 101-crackme */
     if (strcmp(password, "Tada! Congrats") == 0)
     {
@@ -38,4 +35,3 @@ int main(void)
 
     return (0);
 }
-
