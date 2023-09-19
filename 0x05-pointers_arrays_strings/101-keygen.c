@@ -29,6 +29,12 @@ int main(void)
     /* Print the generated password */
     printf("%s\n", password);
 
+    /* Check if the generated password is valid for 101-crackme */
+    if (strcmp(password, "Tada!Congrats") == 0)
+    {
+        printf("Tada! Congrats\n");
+    }
+
     return (0);
 }
 
