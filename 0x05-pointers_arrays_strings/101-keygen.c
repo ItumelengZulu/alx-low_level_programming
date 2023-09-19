@@ -40,10 +40,9 @@ char *generate_password(void)
                 }
         }
 
-        // Ensure at least one lowercase letter, one uppercase letter, and one digit
         if (lowercase_count == 0 || uppercase_count == 0 || digit_count == 0) {
             free(password);
-            return generate_password(); // Regenerate the password if criteria not met
+            return generate_password();
         }
 
         password[11] = '\0'; /* Null-terminate the password */
