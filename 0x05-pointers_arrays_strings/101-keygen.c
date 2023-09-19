@@ -32,7 +32,7 @@ char *generate_password(void)
 	return password;
 }
 
-int pass_main(void)
+int main(void)
 {
 	char *password = generate_password();
 	printf("%s\n", password);
