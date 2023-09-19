@@ -10,33 +10,31 @@ int _atoi(char *s)
 {
 	int sign = 1; /* Initialize sign as positive */
 	int result = 0;
+	int started = 0; /* Flag to track if parsing has started */
 
-	/* Skip leading whitespace */
-	while (*s == ' ' || (*s >= 9 && *s <= 13))
-		s++;
-
-	/* Handle the sign */
-	if (*s == '-')
+	while (*s)
 	{
-		sign = -1;
-		s++;
-	}
-	else if (*s == '+')
-	{
-		s++;
-	}
-
-	/* Parse the digits */
-	while (*s >= '0' && *s <= '9')
-	{
-		/* Check for overflow before updating result */
-		if (result > (2147483647 - (*s - '0')) / 10)
+		if (*s >= '0' && *s <= '9')
 		{
-			/* Overflow detected, return the maximum or minimum integer */
-			return (sign == 1) ? 2147483647 : -2147483648;
+			/* Check for overflow before updating result */
+			if (result > (2147483647 - (*s - '0')) / 10)
+			{
+				return (sign == 1) ? 2147483647 : -2147483648;
+			}
+			result = result * 10 + (*s - '0');
+			started = 1; /* Mark that parsing has started */
 		}
+		else
+		{
+			/* If parsing has started and a non-digit is encountered, stop parsing */
+			if (started)
+				break;
 
-		result = result * 10 + (*s - '0');
+			if (*s == '-')
+				sign *= -1;
+
+			/* Ignore other characters until parsing starts */
+		}
 		s++;
 	}
 
@@ -45,10 +43,31 @@ int _atoi(char *s)
 
 int atoi_main(void)
 {
-	char str[] = "  -12345abc";
-	int num = _atoi(str);
-	printf("Converted integer: %d\n", num);
+	char *tests[] = {
+		"4",
+		"10",
+		"-3",
+		"99",
+		"-40",
+		" ------++++++-----+++++--98",
+		"Hello ----- world\n",
+		"+++++ +-+ 2242454",
+		"2147483647",
+		" + + - -98 Battery Street; San Francisco, CA 94111 - USA ",
+		"---++++ -++ Sui - te - 402 #cisfun :)",
+		"",
+		"-2147483648",
+		NULL
+	};
 
-	return 0;
+	int i = 0;
+	while (tests[i])
+	{
+		int num = _atoi(tests[i]);
+		printf("Input: \"%s\", Converted integer: %d\n", tests[i], num);
+		i++;
+	}
+
+	return (0);
 }
 
