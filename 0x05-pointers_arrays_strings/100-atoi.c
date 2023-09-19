@@ -3,7 +3,9 @@
  *
  * @s: The string to convert.
  *
- * Return: The integer value of the string.
+ * Return: The integer value of the string, or 0 if there are no numbers in the
+ * string, the string is empty, the conversion results in an integer overflow, or
+ * the string contains alpha characters.
  */
 int _atoi(char *s)
 {
@@ -24,6 +26,14 @@ int _atoi(char *s)
     while (*s >= '0' && *s <= '9') {
         result = result * 10 + (*s - '0');
         if (result * sign > INT_MAX || result * sign < INT_MIN) {
+            return 0;
+        }
+        s++;
+    }
+
+    /* Check if the string contains alpha characters. */
+    while (*s != '\0') {
+        if (*s < '0' || *s > '9') {
             return 0;
         }
         s++;
