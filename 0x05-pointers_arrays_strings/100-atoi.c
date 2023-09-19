@@ -1,73 +1,23 @@
-#include <stdio.h>
+int _atoi(char *s) {
+  // Skip leading whitespace characters.
+  while (*s == ' ' || *s == '\t' || *s == '\n') {
+    s++;
+  }
 
-/**
- * _atoi - Converts a string to an integer.
- * @s: Pointer to the input string.
- *
- * Return: The converted integer. If no valid integer is found, return 0.
- */
-int _atoi(char *s)
-{
-	int sign = 1; /* Initialize sign as positive */
-	int result = 0;
-	int started = 0; /* Flag to track if parsing has started */
+  // Check for a sign character.
+  int sign = 1;
+  if (*s == '+' || *s == '-') {
+    sign = (*s == '+') ? 1 : -1;
+    s++;
+  }
 
-	while (*s)
-	{
-		if (*s >= '0' && *s <= '9')
-		{
-			/* Check for overflow before updating result */
-			if (result > (2147483647 - (*s - '0')) / 10)
-			{
-				return (sign == 1) ? 2147483647 : -2147483648;
-			}
-			result = result * 10 + (*s - '0');
-			started = 1; /* Mark that parsing has started */
-		}
-		else
-		{
-			/* If parsing has started and a non-digit is encountered, stop parsing */
-			if (started)
-				break;
+  // Convert the digits in the string to an integer.
+  int result = 0;
+  while (*s >= '0' && *s <= '9') {
+    result = result * 10 + (*s - '0');
+    s++;
+  }
 
-			if (*s == '-')
-				sign *= -1;
-
-			/* Ignore other characters until parsing starts */
-		}
-		s++;
-	}
-
-	return result * sign;
+  // Return the integer, multiplied by the sign.
+  return result * sign;
 }
-
-int atoi_main(void)
-{
-	char *tests[] = {
-		"4",
-		"10",
-		"-3",
-		"99",
-		"-40",
-		" ------++++++-----+++++--98",
-		"Hello ----- world\n",
-		"+++++ +-+ 2242454",
-		"2147483647",
-		" + + - -98 Battery Street; San Francisco, CA 94111 - USA ",
-		"---++++ -++ Sui - te - 402 #cisfun :)",
-		"",
-		"-2147483648",
-		NULL
-	};
-
-	int i = 0;
-	while (tests[i])
-	{
-		int num = _atoi(tests[i]);
-		printf("Input: \"%s\", Converted integer: %d\n", tests[i], num);
-		i++;
-	}
-
-	return (0);
-}
-
