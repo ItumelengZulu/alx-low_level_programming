@@ -48,7 +48,7 @@ int _atoi(char *s)
     return result * sign;
 }
 
-int main()
+int atoi_main()
 {
     char str[] = "12345";
     int num = _atoi(str);
