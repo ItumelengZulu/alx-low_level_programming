@@ -6,14 +6,14 @@
 #define PASSWORD_LENGTH 12
 
 /**
- * main - Generates a random valid password for 101-crackme
+ * generate_password - Generates a random valid password
  *
- * Return: 0 on success
+ * Return: A pointer to the generated password
  */
-int main(void)
+char *generate_password()
 {
     char password[PASSWORD_LENGTH + 1];  /* +1 for the null terminator */
-    const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$";
     int i;
 
     /* Seed the random number generator with the current time */
@@ -27,13 +27,41 @@ int main(void)
     }
     password[PASSWORD_LENGTH] = '\0';
 
-    /* Print the generated password */
-    printf("%s\n", password);
+    return (password);
+}
 
-    /* Check if the generated password is valid for 101-crackme */
-    if (strcmp(password, "Tada!Congrats") == 0)
+/**
+ * is_password_valid - Checks if a password is valid for 101-crackme
+ *
+ * @password: The password to check
+ *
+ * Return: True if the password is valid, false otherwise
+ */
+bool is_password_valid(const char *password)
+{
+    return (strcmp(password, "Tada!Congrats") == 0);
+}
+
+/**
+ * main - Generates a random valid password for 101-crackme
+ *
+ * Return: 0 on success
+ */
+int main(void)
+{
+    char *password;
+
+    /* Generate a random password */
+    password = generate_password();
+
+    /* Check if the generated password is valid */
+    if (is_password_valid(password))
     {
         printf("Tada! Congrats\n");
+    }
+    else
+    {
+        printf("Wrong password\n");
     }
 
     return (0);
