@@ -15,35 +15,44 @@ int _atoi(char *s)
     int sign = 1;
     int result = 0;
 
-    /* Skip leading whitespace characters. */
-    while (*s == ' ' || *s == '\t' || *s == '\n') {
+    /* Skip leading whitespace characters */
+    while (*s == ' ' || *s == '\t' || *s == '\n')
+    {
         s++;
     }
 
-    /* Check for a sign character. */
-    if (*s == '+' || *s == '-') {
-        sign = (*s == '+') ? 1 : -1;
-        s++;
+    /* Check for a sign character */
+    if (*s == '+' || *s == '-')
+    {
+        sign = (*s++ == '-') ? -1 : 1; /* Simplified sign assignment */
     }
 
-    /* Convert the digits in the string to an integer. */
-    while (*s >= '0' && *s <= '9') {
-        result = result * 10 + (*s - '0');
-        if (result * sign > INT_MAX || result * sign < INT_MIN) {
-            return 0;
+    /* Convert the digits in the string to an integer */
+    while (*s >= '0' && *s <= '9')
+    {
+        int digit = *s - '0';
+
+        /* Check for integer overflow before updating result */
+        if (result > (INT_MAX - digit) / 10)
+        {
+            if (sign == 1)
+                return INT_MAX;
+            else
+                return INT_MIN;
         }
+
+        result = result * 10 + digit;
         s++;
     }
 
-    /* Check if the string contains alpha characters. */
-    while (*s != '\0') {
-        if (*s < '0' || *s > '9') {
-            return 0;
-        }
-        s++;
-    }
-
-    /* Return the integer, multiplied by the sign. */
     return result * sign;
+}
+
+int main()
+{
+    char str[] = "12345";
+    int num = _atoi(str);
+    printf("Converted number: %d\n", num);
+    return 0;
 }
 
