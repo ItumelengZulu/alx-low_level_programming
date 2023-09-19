@@ -12,20 +12,21 @@
  */
 int _atoi(char *s)
 {
+    int sign = 1;
+    int result = 0;
+
     /* Skip leading whitespace characters. */
     while (*s == ' ' || *s == '\t' || *s == '\n') {
         s++;
     }
 
     /* Check for a sign character. */
-    int sign = 1;
     if (*s == '+' || *s == '-') {
         sign = (*s == '+') ? 1 : -1;
         s++;
     }
 
     /* Convert the digits in the string to an integer. */
-    int result = 0;
     while (*s >= '0' && *s <= '9') {
         result = result * 10 + (*s - '0');
         if (result * sign > INT_MAX || result * sign < INT_MIN) {
