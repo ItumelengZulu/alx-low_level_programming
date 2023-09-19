@@ -11,24 +11,19 @@
  * the string contains alpha characters.
  */
 int _atoi(char *s) {
-  // Check if the string is empty.
-  if (*s == '\0') {
-    return 0;
-  }
-
-  // Skip leading whitespace characters.
+  /* Skip leading whitespace characters. */
   while (*s == ' ' || *s == '\t' || *s == '\n') {
     s++;
   }
 
-  // Check for a sign character.
+  /* Check for a sign character. */
   int sign = 1;
   if (*s == '+' || *s == '-') {
     sign = (*s == '+') ? 1 : -1;
     s++;
   }
 
-  // Convert the digits in the string to an integer.
+  /* Convert the digits in the string to an integer. */
   int result = 0;
   while (*s >= '0' && *s <= '9') {
     result = result * 10 + (*s - '0');
@@ -38,7 +33,7 @@ int _atoi(char *s) {
     s++;
   }
 
-  // Check if the string contains alpha characters.
+  /* Check if the string contains alpha characters. */
   while (*s != '\0') {
     if (*s < '0' || *s > '9') {
       return 0;
@@ -46,7 +41,7 @@ int _atoi(char *s) {
     s++;
   }
 
-  // Return the integer, multiplied by the sign.
+  /* Return the integer, multiplied by the sign. */
   return result * sign;
 }
 
