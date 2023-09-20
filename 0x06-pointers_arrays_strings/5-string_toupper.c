@@ -1,19 +1,20 @@
 /**
- * _strcmp - Compares two strings.
- * @s1: The first string to compare.
- * @s2: The second string to compare.
+ * string_toupper - Converts all lowercase letters in a string to uppercase.
+ * @str: The string to be converted.
  *
- * Return:
- *   - An integer less than, equal to, or greater than zero if s1 is found,
- *     respectively, to be less than, to match, or be greater than s2.
+ * Return: A pointer to the modified string.
  */
-int _strcmp(char *s1, char *s2)
+char *string_toupper(char *str)
 {
-    while (*s1 != '\0' && *s2 != '\0' && *s1 == *s2) {
-        s1++;
-        s2++;
+    char *result = str; /* Store the start address of the string for returning later */
+
+    while (*str != '\0') {
+        if (*str >= 'a' && *str <= 'z') {
+            *str = *str - 'a' + 'A'; /* Convert to uppercase */
+        }
+        str++;
     }
 
-    return (*s1 - *s2);
+    return result; /* Return the start address of the modified string */
 }
 
