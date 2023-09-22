@@ -1,55 +1,49 @@
 #include <stdio.h>
 
 /**
- * print_buffer - Prints the content of a buffer in a specific format.
- * @b: The buffer to be printed.
+ * print_buffer - Prints the content of a buffer in a user-friendly format.
+ * @b: Pointer to the buffer to be printed.
  * @size: The size of the buffer.
+ *
+ * Description: This function prints the hexadecimal and ASCII representation
+ * of a buffer, with 10 bytes per line.
  */
 void print_buffer(char *b, int size)
 {
-    int i, j;
+    int i, j; /* Declare loop counters outside of the for loops */
 
-    if (size <= 0) {
-        putchar('\n'); /* Output a new line if size is 0 or less */
+    if (size <= 0)
+    {
+        printf("\n");
         return;
     }
 
-    for (i = 0; i < size; i += 10) {
-        printf("%.8x: ", i); /* Print the position in hexadecimal (8 chars) */
+    /* Print the header line. */
+    printf("%08x ", 0);
 
-        for (j = 0; j < 10; j++) {
-            if (i + j < size) {
-                printf("%.2x", b[i + j]); /* Print the hexadecimal content (2 chars) */
-            } else {
-                printf("  "); /* If we've reached the end of the buffer, print spaces */
+    /* Print the buffer content, 10 bytes per line. */
+    for (i = 0; i < size; i += 10)
+    {
+        /* Print the hexadecimal content of the buffer. */
+        for (j = i; j < i + 10 && j < size; j++)
+        {
+            printf("%02x ", b[j]);
+        }
+
+        /* Print the content of the buffer. */
+        for (j = i; j < i + 10 && j < size; j++)
+        {
+            if (b[j] >= 32 && b[j] <= 126)
+            {
+                printf("%c", b[j]);
             }
-
-            if (j % 2 == 1) {
-                putchar(' '); /* Separate the bytes with a space */
+            else
+            {
+                printf(".");
             }
         }
 
-        for (j = 0; j < 10; j++) {
-            if (i + j < size) {
-                if (b[i + j] >= 32 && b[i + j] <= 126) {
-                    putchar(b[i + j]); /* If printable, print the character */
-                } else {
-                    putchar('.'); /* If not printable, print a dot */
-                }
-            }
-        }
-
-        putchar('\n'); /* End the line */
+        printf("\n");
     }
-}
-
-int main(void)
-{
-    char buffer[] = "Hello, World!\nThis is a test buffer.";
-    int size = sizeof(buffer) - 1; /* Subtract 1 to exclude the null terminator */
-
-    print_buffer(buffer, size);
-
-    return (0);
 }
 
