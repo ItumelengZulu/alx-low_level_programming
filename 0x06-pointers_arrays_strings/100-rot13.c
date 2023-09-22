@@ -6,7 +6,9 @@
  */
 char *rot13(char *str)
 {
-    for (int i = 0; str[i] != '\0'; i++) {
+    int i; /* Declare the variable outside the loop */
+
+    for (i = 0; str[i] != '\0'; i++) {
         if (str[i] >= 'a' && str[i] <= 'z') {
             str[i] = (str[i] - 'a' + 13) % 26 + 'a';
         } else if (str[i] >= 'A' && str[i] <= 'Z') {
