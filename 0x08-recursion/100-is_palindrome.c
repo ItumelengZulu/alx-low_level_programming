@@ -16,12 +16,12 @@ int check_palindrome(char *s, int start, int end);
  */
 int is_palindrome(char *s)
 {
-    if (s == NULL) /* Check for NULL string */
-    {
-        return (0);
-    }
+	if (s == NULL) /* Check for NULL string */
+	{
+		return (0);
+	}
 
-    return (check_palindrome(s, 0, strlen(s) - 1)); /* Call a helper function to check palindrome */
+	return (check_palindrome(s, 0, strlen(s) - 1)); /* Call a helper function to check palindrome */
 }
 
 /**
@@ -38,17 +38,17 @@ int is_palindrome(char *s)
  */
 int check_palindrome(char *s, int start, int end)
 {
-    if (start >= end) /* Base case: All characters have been compared */
-    {
-        return (1);
-    }
-    else if (s[start] != s[end]) /* If characters don't match, it's not a palindrome */
-    {
-        return (0);
-    }
-    else
-    {
-        return (check_palindrome(s, start + 1, end - 1)); /* Compare the next pair of characters */
-    }
+	if (start >= end) /* Base case: All characters have been compared */
+	{
+		return (1);
+	}
+	else if (s[start] != s[end]) /* If characters don't match, it's not a palindrome */
+	{
+		return (0);
+	}
+	else
+	{
+		return (check_palindrome(s, start + 1, end - 1)); /* Compare the next pair of characters */
+	}
 }
 
