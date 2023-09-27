@@ -16,19 +16,19 @@ int is_prime_number(int n)
 {
 	if (n <= 1) /* Base case: 0 and 1 are not prime numbers */
 	{
-		return 0;
+		return (0);
 	}
 	else if (n <= 3) /* Base case: 2 and 3 are prime numbers */
 	{
-		return 1;
+		return (1);
 	}
 	else if (n % 2 == 0 || n % 3 == 0) /* Check divisibility by 2 and 3 */
 	{
-		return 0;
+		return (0);
 	}
 	else
 	{
-		return is_prime_recursive(n, 5); /* Call a helper function to check divisibility */
+		return (is_prime_recursive(n, 5)); /* Call a helper function to check divisibility */
 	}
 }
 
@@ -47,15 +47,15 @@ int is_prime_recursive(int n, int divisor)
 {
 	if (divisor * divisor > n) /* If no divisors are found */
 	{
-		return 1;
+		return (1);
 	}
 	else if (n % divisor == 0) /* If n is divisible by the current divisor */
 	{
-		return 0;
+		return (0);
 	}
 	else
 	{
-		return is_prime_recursive(n, divisor + 2); /* Check the next odd divisor */
+		return (is_prime_recursive(n, divisor + 2)); /* Check the next odd divisor */
 	}
 }
 
