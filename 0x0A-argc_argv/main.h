@@ -5,7 +5,7 @@
 int _putchar(char *str);
 
 /* Prototype function */
-/*int main(int argc, char *argv[]);*/
+int main(int argc, char *argv[]);
 
 #endif /* MAIN_H */
 
