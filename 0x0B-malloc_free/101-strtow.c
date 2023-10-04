@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-/* Function to count the number of words in a string */
+/* Function to count the number of words in a string 
+ *
+ * */
 int count_words(char *str)
 {
     int count = 0;
