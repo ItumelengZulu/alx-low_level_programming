@@ -10,7 +10,7 @@ int count_words(char *str)
 
     while (*str)
     {
-        if (*str == ' ')
+        if (*str == ' ' || *str == '\t' || *str == '\n')
         {
             if (in_word)
             {
@@ -50,7 +50,7 @@ char **strtow(char *str)
         return NULL;
 
     word_index = 0;
-    token = strtok(str, " ");
+    token = strtok(str, " \t\n");
 
     while (token != NULL)
     {
@@ -66,7 +66,7 @@ char **strtow(char *str)
         }
 
         word_index++;
-        token = strtok(NULL, " ");
+        token = strtok(NULL, " \t\n");
     }
 
     words[num_words] = NULL; /* Set the last element to NULL */
