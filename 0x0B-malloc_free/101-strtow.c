@@ -35,7 +35,7 @@ int count_words(char *str)
 char **strtow(char *str)
 {
     int num_words, word_index;
-    char **words, *token;
+    char **words, *token, *copy;
 
     if (str == NULL || *str == '\0')
         return NULL;
@@ -50,7 +50,15 @@ char **strtow(char *str)
         return NULL;
 
     word_index = 0;
-    token = strtok(str, " \t\n");
+    copy = strdup(str);
+
+    if (copy == NULL)
+    {
+        free(words);
+        return NULL;
+    }
+
+    token = strtok(copy, " \t\n");
 
     while (token != NULL)
     {
@@ -62,6 +70,7 @@ char **strtow(char *str)
             for (word_index = 0; word_index < num_words; word_index++)
                 free(words[word_index]);
             free(words);
+            free(copy);
             return NULL;
         }
 
@@ -70,6 +79,7 @@ char **strtow(char *str)
     }
 
     words[num_words] = NULL; /* Set the last element to NULL */
+    free(copy);
 
     return words;
 }
