@@ -1,5 +1,5 @@
-#ifndef LIST_H
-#define LIST_H
+#ifndef LISTS_H
+#define LISTS_H
 
 #include <stddef.h>
 
@@ -16,8 +16,9 @@ typedef struct list_s
     struct list_s *next;
 } list_t;
 
-/* Function prototype for printing a list */
+/* Function prototypes for printing and counting a list */
 size_t print_list(const list_t *h);
+size_t list_len(const list_t *h);
 
-#endif /* LIST_H */
+#endif /* LISTS_H */
 
