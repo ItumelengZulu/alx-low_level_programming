@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stddef.h>
 
 /**
  * struct listint_s - singly linked list
@@ -25,6 +26,9 @@ size_t listint_len(const listint_t *h);
 
 /* Function to put a character to the standard output */
 int _putchar(char c);
+
+/* Function to print elements of a listint_t list */
+listint_t *add_nodeint(listint_t **head, const int n);
 
 #endif /* LISTS_H */
 
