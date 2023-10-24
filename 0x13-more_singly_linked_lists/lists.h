@@ -28,6 +28,9 @@ size_t listint_len(const listint_t *h);
 int _putchar(char c);
 
 /* Function to print elements of a listint_t list */
+listint_t *add_nodeint_end(listint_t **head, const int n);
+
+/* Function to print elements of a listint_t list */
 listint_t *add_nodeint(listint_t **head, const int n);
 
 #endif /* LISTS_H */
