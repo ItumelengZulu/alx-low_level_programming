@@ -20,6 +20,9 @@ typedef struct listint_s
 /* Function to print elements of a listint_t list */
 size_t print_listint(const listint_t *h);
 
+/* Function to print elements of a listint_t list */
+size_t listint_len(const listint_t *h);
+
 /* Function to put a character to the standard output */
 int _putchar(char c);
 
