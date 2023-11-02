@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <elf.h>
+
+
+/** This comments are for the elf header 
+ * Diplayed information 
+ * magic, class
+ * data, version.
+ * OS/ABI ABI Version
+ * Type
+ * Entry point address
+ */
+
+/* Function to print an error message and exit with status code 98 */
+void print_error_and_exit(const char *message) {
+    fprintf(stderr, "%s\n", message);
+    exit(98);
+}
+
+/* Function to display information from the ELF header */
+void display_elf_header_info(Elf64_Ehdr *header) {
+
+    int i;
+    printf("  Magic:   ");
+    for (i = 0; i < EI_NIDENT; i++) {
+        printf("%02x ", header->e_ident[i]);
+    }
+    printf("\n");
+
+    printf("  Class:                             %s\n", (header->e_ident[EI_CLASS] == ELFCLASS32) ? "ELF32" : "ELF64");
+    printf("  Data:                              %s\n", (header->e_ident[EI_DATA] == ELFDATA2LSB) ? "2's complement, little-endian" : "2's complement, big-endian");
+    printf("  Version:                           %d (current)\n", header->e_ident[EI_VERSION]);
+    printf("  OS/ABI:                            %d\n", header->e_ident[EI_OSABI]);
+    printf("  ABI Version:                       %d\n", header->e_ident[EI_ABIVERSION]);
+    printf("  Type:                              %d\n", header->e_type);
+    printf("  Entry point address:               %p\n", (void *)header->e_entry);
+}
+
+int main(int argc, char *argv[]) {
+    int fd;
+    Elf64_Ehdr header;
+    
+    if (argc != 2) {
+        print_error_and_exit("Usage: elf_header elf_filename");
+    }
+
+    fd = open(argv[1], O_RDONLY);
+    if (fd == -1) {
+        print_error_and_exit("Error: Can't open file");
+    }
+
+    if (read(fd, &header, sizeof(header)) != sizeof(header) || memcmp(header.e_ident, ELFMAG, SELFMAG) != 0) {
+        print_error_and_exit("Error: Not an ELF file");
+    }
+
+    display_elf_header_info(&header);
+
+    close(fd);
+    return 0;
+}
+
