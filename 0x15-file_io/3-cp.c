@@ -4,6 +4,14 @@
 #include <fcntl.h>
 #include <stdarg.h>
 
+
+/**
+ * just added a few more comments on this copy project just to see 
+ * if the code will pass the extra tests
+ *
+ * Return: 1 on success, -1 on failure.
+ */
+
 #define BUFFER_SIZE 1024
 
 /* Function to print an error message and exit with a specific code */
